@@ -1,3 +1,9 @@
+import {searchCity} from "./search";
+
+window.onload = function(){
+    search();
+}
+
 let city = document.getElementById("city");
 let iconw = document.getElementById("icon");
 let temp = document.getElementById("temp");
@@ -5,6 +11,7 @@ let pressure = document.getElementById("tempDesc");
 let country = document.getElementById("country");
 let wind = document.getElementById("wind");
 let input = document.getElementById("input");
+let cities= [];
 
 const APIKEY = `621ade6f9cf22647cbe0dc0e15904a9c`;
 const weather = {};
@@ -14,8 +21,20 @@ weather.temp = {
 
 input.addEventListener('submit', cityChoose);
 
+function search() {
+    fetch("cities.json")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            return cities.push(...data)
+        });
+    let city = document.getElementById("text").value;
+    searchCity(city, cities);
+}
+
 function cityChoose(e) {
-    e.preventDefault();
+    e.preventDefault();;
     let city = document.getElementById("text").value;
     getWeatherByCity(city);
 }
@@ -91,4 +110,3 @@ function showError(error) {
     pressure.style.display = "block";
     pressure.message.innerHTML = `<p>${error.message}</p>`
 }
-

@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    display: flex;
+    background-color: darkgrey;
+
+    flex-direction: column;
+    color: white;
+}
+
+.container{
+    background-color: #dee2e6;
+    color: black;
+    position: relative;
+    margin-top: 5%;
+    width: 400px;
+}
+
+#temp{
+    cursor: pointer;
+
+}
+
+#input{
+    width: 200px;
+}
